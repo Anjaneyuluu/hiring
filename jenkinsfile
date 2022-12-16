@@ -1,0 +1,21 @@
+pipeline {
+    agent any
+
+    stages {
+        stage('Git checkout') {
+            steps {
+               git credentialsId: 'git-credentials', url: 'https://github.com/Anjaneyuluu/hiring'       
+            }
+        }
+                
+                stage ('Maven package'){
+                
+                     steps{
+                   
+                         sh 'mvn clean package'
+                   
+                    }
+            }
+        }
+    }
+ 
